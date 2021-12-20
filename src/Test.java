@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -20,25 +21,22 @@ public class Test {
 
         // Logic
         final String MONTHS = "January February March December";
-        final String DATES = "1st 2nd 3rd 4th";
-        final String DATES_v2 = "1 2 3 4"; // dates sometimes formatted differently
+        final String DATES = "12345678910111213141516171819202122232425262728293031"; // dates
+        // sometimes formatted differently
         ArrayList<String> month = new ArrayList<>();
         ArrayList<String> day = new ArrayList<>();
         ArrayList<String> name = new ArrayList<>();
 
 
-
         Scanner fileScanner = new Scanner(text);
         while (fileScanner.hasNext()) {
-            if (MONTHS.contains(fileScanner.next())) {
-                month.add(fileScanner.next());
+            String text1 = fileScanner.next();
+            if (MONTHS.contains(text1)) {
+                month.add(text1);
             }
-            if (DATES.contains(fileScanner.next()) || DATES_v2.contains(fileScanner.next())) {
-                day.add(fileScanner.next());
-            } else {
-                day.add("-1");
+            if (DATES.contains(text1)) {
+                day.add(text1);
             }
-
         }
         System.out.println(month);
         System.out.println(day);
